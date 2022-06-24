@@ -113,6 +113,7 @@ ul{
 }
 ul>li{
     font-style: italic;
+    font-size: 20px;
 }
 ol{
     font-size: 20px;
@@ -121,6 +122,9 @@ ol{
     direction: ltr; /* Reset to default */
     display: inline-block;
 
+}
+ol>li{
+    font-size: 20px;
 }
 
 @media (max-width: 600px) {
