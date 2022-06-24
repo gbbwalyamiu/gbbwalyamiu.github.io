@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lab 2 - About Me</title>
     <style>
         h1{
             text-align: center;
-            background-color: gray;
+           
         }
         .centered{
             align-content: center;
@@ -18,14 +18,148 @@
         .w-100{
             width: 100%;
         }
+        table tr td{
+            vertical-align: top;
+
+        }
+        table>tbody>tr>td:first-child{
+            min-width: 150px;
+            font-weight: 600;
+            color:goldenrod;
+
+        }
 
     </style>
+    <link href="css.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body style="padding-left: 30px; padding-right:70px">
     
-    <div style="align-content: center; background-color: ivory ; width: 70%; border: 1px solid blue; margin-left: 15%; margin-right: 15%; ">
-         <div class="centered w-100">
-            <h1>Lab 2</h1>  
+    <div style="align-content: center; padding-top: 0px; width: 70%; border: 1px solid blue; margin-left: 15%; margin-right: 15%; ">
+         <div class="headdiv" >
+            <h1>About Gad Bwalya</h1>  
+         </div>
+         <div class="contentdiv">
+            <div class="insidecontentdiv" >
+                <h3>About Me Summary</h3>
+                <p>
+                    <span class="myspan">M</span>    y Name is Gad Bwalya, aged 33, from Zambia, a country in Southern African bordering with countries as Zimbabwe, Congo DR and Malawi. Zambia is home to some one of the seven wonders of the world; the mighty <a href="https://en.wikipedia.org/wiki/Victoria_Falls">Victoria falls</a> as well as several tourist attractions. 
+                    <br/>
+                    I like <i><b>Joking</b></i> most of the times, even on serious things. I like <b><i>playing music</i></b>. My career models a larger part of me. <i><b>I love my software engineering career</b>b></i>, and I would still choose the same career in the next life, if at all such exists.
+                </p>
+
+            </div>
+            <div class="insidecontentdiv" >
+                <p>The following images, show some of my favorite moments. They also describe what makes me happiest the most;</p>
+                 
+
+
+            </div>
+
+
+            <div class="insidecontentdiv" style="display: flex;" >
+                
+                <div style="width: 400px; height:500px; position: relative">
+                    <div class="picview">
+                        <img class="picview" src="me1.GIF">
+    
+                     </div>
+                     <br/>
+                     <b>Happy - Music</b>
+                </div> 
+               
+
+                <div style="width: 400px; height:500px; position: relative;">
+                    <div class="picview" style="opacity:0.1 ;">
+                        <img class="picview" src="me2.GIF">
+    
+                     </div>
+                     <br/>
+                     <b>Sad</b>
+                </div> 
+                <div style="width: 400px; height:500px;position: relative">
+                    <div class="picview">
+                        <img class="picview" src="me3.GIF">
+    
+                     </div>
+                     <br/>
+                     <b>Relaxing</b>
+                </div> 
+
+
+            </div>
+           
+                <h3>My Courses at MIU</h3>
+            
+            <div class="insidecontentdiv" style="display:flex ;">
+                
+                <div class="halfdiv">
+                    <p class="subheader"><h5>Subjects I have Underken</h5></p>
+                <p>
+                    <ul>
+                        <li>Science and Technology of Concioussness</li>
+                        <li>Fundamental Programming Practices</li>
+                        <li>Morden Programming Practices</li>
+                        <li>Leadership for Tech Managers</li>
+                        <li>Algorithms </li>
+                        <li>Big Data Teechnology</li>
+                        <li>Big Data</li>
+                        <li>Fundamental Programming Practices</li>
+                    </ul>
+                </p>
+
+                </div>
+                <div class="halfdiv">
+                  <p class="subheader"><h5>Subjects Iam Yet to Complete</h5></p>
+                <p>
+                    <ul class="ownul">
+                        <li style="font-weight:600px ;">Web Applications Programming (CS472)</li>
+                        <li>Machine Learning (CS534)</li>
+                        <li>Data Analytics (CS573)</li>
+                        <li>Enterprice Archtecture (CS534)</li>
+                        <li>Parallel Programming (CS571) </li>
+                        
+                    </ul>
+                </p>
+
+                </div>
+
+
+                
+
+            </div>
+            <div class="insidecontentdiv">
+                <p class="subheader">My Favorite Movies</p>
+                <p>
+                    <span class="myspan">I</span> do not have so much time for movies. I often sleep 30 minutes into the movie. But if its really interesting, I am likely to go with it all the way especially if it. I have he compiled a list of a fiew of my favorite movies;
+                    <ol reversed>
+                        <li>Money Heist <a href="https://www.imdb.com/title/tt6468322/">(IMDB)</a>
+                            <table>
+                                <tr><td>Director</td><td>Álex Pina</td></tr>
+                                <tr><td>Stars</td><td>Úrsula CorberóÁlvaro MorteItziar Ituño</td></tr>
+                                <tr><td>Genre</td><td>Action, Romance, Suspence <a href="https://www.imdb.com/title/tt6468322/">(IMDB)</a></td></tr>
+                                <tr><td>Story Line</td><td>A clue of 10 smart guys aim to rob the royal bank of spain Romance <br/> led by their master mind - the Professor. <a href="https://www.imdb.com/title/tt6468322/">(IMDB)</a> </td></tr>
+                            </table>
+
+
+                        </li>
+                        <li>Breaking Bad</li>
+                        <li>Haunted House</li>
+                        <li>A fall from Grace</li>
+                    </ol>
+                </p>
+
+            </div>
+            <div class="insidecontentdiv" style="align-items:center; text-align: center; align-content: center; ">
+                <div> 
+                    <a href="https://validator.w3.org/nu/?doc=https://gbbwalyamiu.github.io/lab2/"> <img src="../lab1/checker.GIF" alt="checker" width="120" height="80"> </a>
+                </div>
+                <div> 
+                    <a href="https://validator.w3.org/nu/?doc=https://gbbwalyamiu.github.io/lab2/"> <img src="css_checker.png" alt="css-checker" width="120" height="80"> </a>
+                </div>
+
+            </div>
+            
+
          </div>
         
  
