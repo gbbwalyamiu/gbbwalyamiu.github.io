@@ -1,35 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        h1{
-            text-align: center;
-            background-color: gray;
-        }
-        .centered{
-            align-content: center;
-            text-align: center;
-            
-        }
-        .w-100{
-            width: 100%;
-        }
-
-    </style>
+    <title>Lab 4 - Registration</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <div style="align-content: center; background-color: ivory ; width: 70%; border: 1px solid blue; margin-left: 15%; margin-right: 15%; ">
-         <div class="centered w-100">
-            <h1>Lab 4</h1>  
-         </div>
-        
- 
+    <form action="GET">
+     <b>Register while places last</b> <select style="max-width:100px; min-width:100px; width: 100px; height: 16px; border-style: none;"><option value="test" selected>More Option</option><option value="">Submit</option></select>
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <label for="fname">First Name *</label>
+            </div>
+            <div class="col-90">
+                <input type="text" id="fname" name="firstname" placeholder="Enter your first name" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <label for="lname">Last Name *</label>
+            </div>
+            <div class="col-90">
+                <input type="text" id="lname" name="lastname" placeholder="Enter your last name" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <label for="company">Company/Institution *</label>
+            </div>
+            <div class="col-90">
+                <input type="text" id="company" name="company" placeholder="Company/Institution" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <label for="address">Address</label>
+            </div>
+            <div class="col-90">
+                <textarea id="address" name="address"></textarea>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <label for="city">City:</label>
+            </div>
+            <div class="col-90">
+                <input type="text" id="city" name="city" maxlength="10">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <label for="state" required >State/Province</label>
+            </div>
+            <div class="col-90">
+                <select name="state" id="state">
+                    <option value="ia" selected>-Select-</option>
+                    <option value="ia">IOWA</option>
+                    <option value="cgo">CHICAGO</option>
+                    <option value="wtn">WASHINGTONE</option>
+                    <option value="txs">TEXAS</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <label for="country" required >Country</label>
+            </div>
+            <div class="col-90">
+                <select name="country" id="country">
+                    <option value="ia" selected>-Select-</option>
+                    <option value="usa">United States of America</option>
+                    <option value="Zmb">Zambia</option>
+                    <option value="cnd">Canada</option>
+                    
+                    
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-10">
+                <label for="email">Email *</label>
+            </div>
+            <div class="col-90">
+                <input type="email" id="email" name="email" placeholder="yourid@host.domain" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <label for="mobile">Mobile:</label>
+            </div>
+            <div class="col-90">
+                <input type="tel" id="mobile" name="mobile" placeholder="only 10 digits are allowed">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <label for="gender" required>Gender:</label>
+            </div>
+            <div class="col-90">
+                <input type="radio" id="male" name="gender" value="male"/>Male
+                <input type="radio" id="female" name="gender" value="female"/>Female
+            </div>
+        </div>
+          
     </div>
+    <div class="container">
+
+        
+
+
+        <div class="row">
+            <div class="col-10">
+                <label for="address">Lunch</label>
+            </div>
+            <div class="col-90">
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <label for="preference" required >Preference</label>
+            </div>
+            <div class="col-90">
+                <select name="country" id="country">
+                    
+                    <option value="vege" selected>Vegeterian</option>
+                    <option value="normal">Normal Diet</option>
+                    <option value="fruit">Fruits Only</option>
+                    
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <label for="specialization">Payment Options</label>
+            </div>
+            <div class="col-90">
+                <input type="checkbox" class="paymentoption" id="cash" name="specialization" value="Computer Science">Cash<br/>
+                <input type="checkbox" class="paymentoption" id="cheque" name="specialization" value="Information Technology">Cheque<br/>
+                <input type="checkbox" class="paymentoption" id="transfer" name="specialization" value="Computer Architecture">Transfer<br/>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <label for="dob">Date Of Birth:</label>
+            </div>
+            <div class="col-90">
+                <input type="Date" id="dob" name="dob">
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-10">
+                <label for="state">Cheqeue No</label>
+            </div>
+            <div class="col-90">
+                <input type="text" id="checkno" name="checkno">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <label for="state">Drawn On Bank</label>
+            </div>
+            <div class="col-90">
+                <input type="text" id="bank" name="bank">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10">
+                <label for="payable">Payable at</label>
+            </div>
+            <div class="col-90">
+                <input type="text" id="payable" name="payable">
+            </div>
+        </div>
+        
     
+        
+        
+    </div>
+    <div class="content" style="align-items:center; align-content:center; background-color: cadetblue; " >
+        <div class="row" style="align-content:center; background-color: cadetblue;">
+            <input type="submit" style="margin-left: 30%;" value="Register" onclick="SaveStudentDetails()">
+            <input type="submit" value="Reset" style="margin-left: 20px ;">
+        </div>
+
+    </div>  
+</form>
 </body>
+
 </html>
