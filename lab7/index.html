@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function askPassword(ok, fail) {
+            let password = prompt("password?", '');
+            if (password == "rockstar") {
+                ok();
+            }
+            else {
+                fail();
+            }
+        }
+
+        let user = {
+            name:  'John',
+            loginOk: ()=>{
+                console.log(name.name + " logged in");
+            },
+            loginFail: ()=> {
+                console.log(this.name + " failed to log in");
+            },
+        };
+        askPassword(()=> user.loginOk.call(user), ()=> user.loginFail.call(user));
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

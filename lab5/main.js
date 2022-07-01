@@ -1,24 +1,21 @@
-//translate/map all elements in an array to another set of values
-function sum(arr)
-{
-    
-    filtered = arr.filter(x=>x>20).map(x=>x);
-    return filtered.reduce(function(prevValue, elem, i, array){
-        return prevValue + elem;
-    });
-    
+function askPassword(ok,fail){
+    let password = prompt("password?",'');
+    if (password =="rockstar"){
+        ok();
+    }
+    else{
+        fail();
+    }
 }
-const a = [23,8,81,3,5,33,3,21,10,19,40];
-let b = sum(a); 
-console.log(b);
+let user = {
+    name: 'John',
+    loginOk(){
+        alert(`${this.name} logged in`);
+    },
+    loginFail(){
+        alert(`${this.name} failed to log in`);
+    }
+};
+askPassword(user.loginOk,user.loginFail);
 
-function newArray(arr)
-{
-    
-    return arr.filter(x=>x.length>=5).filter(x=>x.includes('a', 0));
-   
-    
-}
-names = ['mike hurt','hezel banda', 'kite', 'mard', 'demonstrate', 'nana', 'himabilo'];
-n = newArray(names);
-console.log(n);
+
