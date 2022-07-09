@@ -1,59 +1,34 @@
 var express = require('express');
 var app = express();
+const path = require('path');
 app.set('env','development');
+const productRounter = require('./routes/productRouter');
+const userRouter = require('./routes/userRouter');
+app.use(express.static(path.join(__dirname, 'ui')));
 
 app.use(express.urlencoded({ extended:true }));
-app.use('/ui',(req,res,next)=>{
+app.use('/products', productRounter);
+app.use('/users', userRouter);
+   
+app.get('/', function(req, res){
+   res.sendFile(path.join(__dirname,'..','myexpress','ui','index.html'));
+});
+//Capture All 404 errors
+app.use(function (req,res,next){
     const html = `
         <html>
         <body>
-        
-        <h1>My First Heading</h1>
-        <p>My first paragraph.</p>
-        <form action="/save" method ="get">
-           
-            <label>First Name</label> <br />
-            <input type = "text" value = "Bella" id ="fname" name="lname"/> <br /> <br />
-            <label>Last Name</label> <br />
-            <input type = "text" value = "Gad" id="lname" name ="fname" /> <br />
-            <input type = "submit" value = "submit" />
-         
-        </form>
+        <br />
+        <h1 style="color:red">Opps Something went wrong.</h1>
+        <p style="font-size:26px">
+            The page you requested can not be found. Maybe it has been moved or changed. Kindly check your URL to confirm. <br />
+            Click <a href="http://localhost:3034/">here</a> to get back to the main page.
+        </p>
         </body>
         </html>
     `;
-    res.send(html); 
-})
-app.use('/save',(req,res,next)=>{
-
-    console.log(req.body);
-    console.log(req.body.lname + " "+ req.body.fname);
-    console.log('Data test');
-
-    res.end('Data has been saved successfully');
-})
-
-app.get('/save',(req,res,next)=>{
-
-    console.log(req.query);
-    console.log(req.query.lname + " "+ req.query.fname);
-    console.log('Data test');
-
-    res.end('Data has been saved successfully in get');
-})
-
-app.use((req,res,next)=>{
-    res.write('This lab 12 test');
-    next();
-},(req,res,next)=>{
-    res.end('\n This is the second statement');
-}
-
-)
-
-app.get('/', function(req, res){
-   res.send("Lab 12 Page");
+    //res.send(html);
+	res.status(404).send(html);
 });
-
 const port = 3034;
 app.listen(port,()=>{console.log('running on port '+port)});
