@@ -1,0 +1,18 @@
+{
+  "name": "gbexpress",
+  "version": "1.0.0",
+  "description": "lab 13 assignment",
+  "main": "app.js",
+  "scripts": {
+    "start": "set PORT=3036 && set NODE_ENV=development && nodemon app.js"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Gad Bwalya",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMasters Shop</title>
+    <script>
+        var maxStock = [];
+        var allcart = [];
+
+        window.onload = function(){
+            console.log(sessionStorage);
+            if (sessionStorage.getItem('ufullname') != undefined)
+            {
+                document.getElementById('username').innerText = "Hi, " + sessionStorage.getItem('ufullname');
+            }
+            else{
+                window.location.replace("http://localhost:3999/login");
+            }
+            async function loadProducts(){
+                maxStock = [];
+                const api_url = "http://localhost:3999/prod/products";
+                const response = await fetch(api_url);
+                        
+                        // Storing data in form of JSON
+                var data = await response.json();
+                let allproducts = '';
+                let x = 0;
+                if (data.length ==0)
+                {
+                    allproducts+="<tr><td colspan='6' style='text-align:center'><h5>No Products Available in in Stock</h5></td></tr>";
+                }
+                else
+                {
+                    for (x=0;x<data.length;x++)
+                    {
+                        allproducts+="<tr><td>"+ (x + 1).toString() +"</td>";
+                        allproducts+="<td>"+ data[x].name +"</td>";
+                        allproducts+="<td>"+ data[x].price +"</td>";
+                        allproducts+="<td><img src= 'http://localhost:3999/server/images/"+ data[x].image +"' height = '95%' width = '60%'  /> </td>";
+                        allproducts+="<td>"+ data[x].stock + "</td>";
+                        allproducts+="<td><img src='cart.png' width='60' onclick='addtoCart("+ data[x].id +")' height='30' style='border-radius: 4px;' title='Add item to cart' class='mycart'></td>";
+                        allproducts+="</tr>";
+                        maxStock.push(data[x]);
+                        
+                    }
+                }
+               
+                document.getElementById('productList').innerHTML = allproducts;
+                console.log(data);
+                console.log(maxStock);
+                
+            }
+            loadProducts();
+
+            async function getUserCart(){
+                const api_url2 = "http://localhost:3999/usercarts/cart/user/"+ sessionStorage.getItem('userid');
+                const response = await fetch(api_url2);
+                allcart = [];        
+                        // Storing data in form of JSON
+                var data = await response.json();
+                let allproducts = '';
+                let x = 0;
+                if (data.length ==0)
+                {
+                    allproducts+="<tr><td colspan='5' style='text-align:center'><h5>You Have No Items in your Cart</h5></td></tr>";
+                    allproducts+="<tr><td colspan='5' style='text-align:center'><h5>You Have No Items in your Cart</h5></td></tr>";
+                }
+                else
+                {
+                    for (x=0;x<data.length;x++)
+                    {
+                        allproducts+="<tr><td>"+ (x + 1).toString() +"</td>";
+                        allproducts+="<td>"+ data[x].product.name +"</td>";
+                        allproducts+="<td>"+ data[x].product.price +"</td>";
+                        
+                        allproducts+="<td id='total"+ (x+1).toString() +"'></td>";
+                        allproducts+=`<td>
+                            <div style="align-content:center; vertical-align: middle;">
+                                        <input type="button" id="sub${(x+1).toString()}" onclick=subtract(${(x+1).toString()}) style="min-height: 23px; max-height:23px" width="30px" value="-">
+                                          
+                                        <input type="number" id="qty${(x+1).toString()}" style="max-width:80px; min-width:50px" value="${ data[x].qty }">
+                                            
+                                        <input type="button" id="add${(x+1).toString()}" onclick=addone(${(x+1).toString()},${data[x].product.id}) style="min-height: 23px; max-height:23px" width="30px" value="+">
+                            
+
+                                    </div>
+                            </td>`;
+                        allproducts+="</tr>";
+                        allcart.push(data[x].product.id);
+                    }
+                }
+               
+                document.getElementById('allCart').innerHTML = allproducts;
+                console.log(data);
+                
+            }
+            getUserCart();
+            
+            function addone(r){
+                
+                let current = document.getElementById("qty"+r).value;
+                if (current-1 >=0)
+                {
+                    document.getElementById("qty"+r).value = current-1;
+
+                }
+
+            }
+
+
+            function addone(r,pid){
+                let max = findmaxStock(pid);
+                let current = document.getElementById("qty"+r).value;
+                if (current+1 <= max)
+                {
+                    document.getElementById("qty"+r).value = current+1;
+
+                }
+
+            }
+        }
+        function findmaxStock(pid){
+                let k = 0;
+                for (k=0;k<maxStock.length;k++){
+                    if (maxStock[k].id==pid){
+                        return maxStock[k].stock;
+                    }
+                }
+            }
+            function findProductinList(pid){
+                let k = 0;
+                console.log('test for prod: '+ maxStock);
+                for (k=0;k<maxStock.length;k++){
+                    if (maxStock[k].id==pid){
+                        return maxStock[k];
+                    }
+                }
+            }
+            function finditemincart(pid){
+                return allcart.filter(item=>item ==pid).length > 0;
+            }
+
+
+        async function addtoCart(pid){
+                alert('testing add to cart: '+pid);
+                let prod = findProductinList(pid);
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://localhost:3999/usercarts/cart/");
+
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.onload = () => console.log(xhr.responseText);
+
+                let data = `{
+                   "product": ${prod},
+                   "quantity": 1,
+                   "userid": ${sessionStorage.getItem('puserid')}
+                }`;
+                console.log(data);
+
+
+                xhr.send(data);
+
+
+            }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="padding-left:4px ; padding-right:4px; border: 2px solid black; margin-left: 100px; margin-right: 100px; min-height: 800px;">
+        <div style="width:100%; border: 1px solid cadetblue;">
+            <ul style="padding-left: 60px ; padding-top:10px; padding-top: 10px; padding-right: 20px;">
+        
+                <li style="vertical-align:middle ; width: 41px; max-width: 41px; border-top-left-radius: 20px; border-bottom-left-radius: 20px;"><img src="logo.png" height="40" width="40" style="border-radius: 20px;" alt="logo"></li>
+                <li style="max-width: 180px; min-width: 180px; text-align: left; padding-left: 5px; font-size: 30px; font-weight: 600;">JMasters</li>
+
+                
+                <li id="username" style="width: 34%; vertical-align:middle; text-align: center;"> </li>
+                <li style=" width: 30%; max-width: 200px; background-color: lightslategrey; min-width: 200px; text-align: right; padding-right: 30px; font-size: 20px; font-weight: 200;border-top-right-radius: 20px; border-bottom-right-radius: 22px; vertical-align: middle;"><a href="logout.html" >Logout</a></li>
+              </ul>
+
+        </div>
+        
+        <div style="width:100%; border: 1px solid cadetblue;">
+            <div style="margin-left: 50px ; margin-right:50px; margin-top:0px; min-height: 500px; padding: 10px;">
+                <table>
+                    <caption>List of Available Products</caption>
+                    <tr>
+                        <thead>
+                            <tr>
+                                <td>Sno</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Image</td>
+                                <td>Stock</td>
+                                <td>Actions</td>
+
+                            </tr>
+
+                        </thead>
+                        <tbody id="productList">
+                            
+                        </tbody>
+                        
+                    </tr>
+                </table>
+
+                <br>
+                <br>
+                <table>
+                    <caption>Your Shopping Cart</caption>
+                    <tr>
+                        <thead>
+                            <tr>
+                                <td>No</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>quantity</td>
+                                <td>total</td>
+
+                            </tr>
+
+                        </thead>
+                        <tbody id="allCart">
+                          
+                            
+                            <tr>
+                                <td colspan="5">55 inch Monitor</td> <h5>You have not items in your cart</h5>         </td>
+                            </tr>
+                                
+                                
+                            </tr>
+                            <tr style="font-style:italic; font-weight: 500;">
+                                <td colspan="3" style="text-align: right; padding-right: 4px;">Total</td><td>$0</td>
+                            </tr>
+                        </tbody>
+                        
+                    </tr>
+                </table>
+                
+            </div>
+            <div style="margin-left: 50px ; margin-right:50px; margin-top:0px; min-height: 500px; padding: 10px;">
+                <button style="background:cornflowerblue; width: 250px; height: 50px; font-size: 30px; font-weight: 600; border-radius:6px; float:right; border: 1px solid royalblue;" title="Submit an order" value="Place Order">Place Order</button>
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

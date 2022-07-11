@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div style="padding-left:4px ; padding-right:4px; border: 2px solid black; margin-left: 100px; margin-right: 100px; min-height: 800px;">
+        <div style="width:100%; border: 1px solid cadetblue;">
+
+        </div>
+        <div style="width:100%; border: 1px solid cadetblue;">
+            <div style="margin-left: 50px ; margin-right:50px; margin-top:100px; width: 800px; min-height: 300px;  border: 2px solid cyan; border-radius: 6px; padding: 20px; display: flex;">
+                <div style="width: 130px; height: 120px;  border:1px solid gray; padding-top: 32px;">
+                    <img src="/logo.png" alt="logo" height="80px" width="80px" style="border-radius: 40px; ">
+
+                </div>
+                
+                <div style="width: 800px; height: 120px; display: flex;">
+                    
+                        <div style="padding: 30px; border:1px solid gray; width: 500px; height:120px">
+                             
+                            <label>Username</label>
+                                <input type = "text"  id ="username" placeholder="username" name="password" style="width:100%; float: right; width: 400px; font-size:20px" required /> <br /> <br />
+                                <br>
+
+                                <label>Password</label>
+                                <input type ="password"  id="password"  placeholder="password" name ="password"  style="width:100%; width: 400px; float: right; font-size:20px" required /> <br /> <br />
+                              
+                        <div>
+                        
+
+                </div>
+                
+                        
+            </div>
+            <div style="padding-top: 80px; border: 1px solid cadetblue; padding-left: 20px; width: 100px; height:100px; ">
+                
+                <input type = "submit" value = "Login" onclick="login()" />
+
+            </div>
+           
+
+        </div>
+
+    </div>
+    <script>
+        login = ()=>{
+            //alert('login attemp' + document.getElementById('password').value + document.getElementById('username').value );
+            let pw = document.getElementById('password').value;
+            let un = document.getElementById('username').value;
+            const api_url = "http://localhost:3999/lgn/"+ un + "/"+ pw;
+            console.log(api_url);
+            
+                    // Defining async function
+            async function getapi(url) {
+                        
+                        // Storing response
+                const response = await fetch(url);
+                        
+                        // Storing data in form of JSON
+                var data = await response.json();
+                if (data.userid ==0){
+                    alert('Wrong user name and password. try again');
+                    sessionStorage.removeItem('ufullname');
+                    sessionStorage.removeItem('puserid');
+                    sessionStorage.removeItem('tokenid');
+                    sessionStorage.clear();
+
+                }
+                else
+                {
+                    sessionStorage.setItem('ufullname',data.fullname);
+                    sessionStorage.setItem('puserid',data.userid);
+                    sessionStorage.setItem('tokenid',data.userid + '-'+ data.username + '-'+ Date.now.toString());
+                    console.log(sessionStorage.getItem('ufullname'));
+
+                    alert('Login succesfull');
+                    window.location.replace("http://localhost:3999/products");
+
+                }
+                console.log(data);
+                       
+            }
+                    // Calling that async function
+            getapi(api_url);
+  
+                    
+           }
+           
+        
+    </script>
+    
+</body>
+</html>

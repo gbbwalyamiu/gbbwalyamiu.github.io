@@ -10,9 +10,7 @@ app.use(express.urlencoded({ extended:true }));
 app.use('/products', productRounter);
 app.use('/users', userRouter);
    
-app.get('/', function(req, res){
-   res.sendFile(path.join(__dirname,'..','myexpress','ui','index.html'));
-});
+
 //Capture All 404 errors
 app.use(function (req,res,next){
     const html = `
