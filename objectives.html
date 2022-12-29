@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+   
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+        <div id="testtime"></div>
+        <section>
+            <div class="main-title"><span class="fa fa-list"></span> Objectives </div>
+            <div class="d-f a-c">
+                <i id="showSp" class="fa fa-chevron-circle-right fa-3x mr-5 text-prim"></i>
+                <div id="sPlans" class="hid">
+                </div>
+            </div>
+            <br>
+            <div id="objTable" class="hid">
+                <h1>Sp-1</h1>
+            </div>
+
+            <div id="objInfo" class="hid">
+                <button onclick="toggleObj()" class="prime"> <i class="fa fa-arrow-circle-left"></i> Back </button>
+                <div class="h3">hai</div>
+                <br>
+                <button onclick="toggleS()" class="prime"> <i class="fa fa-circle-plus"></i> Add Stratedy </button>
+                </div>
+                <div id="newStrategy" class="hid">
+                    <h4 class="ff-title">Add Strategy</h4>
+                    <br>
+                    <form>
+                        <label for="">Description</label>
+                        <input type="hidden" id="objIdz">
+                        <textarea type="textarea" id="stDesc" cols="30" rows="3"></textarea>
+                        <input type="hidden" id="spdept">
+                        <label for="">Over Seer</label>
+                        <select id="overseer">
+                            <!-- <option>Select Overseer</option> -->
+                        </select>
+                       
+                        <span class="ff-text">Each box represnts 6 months</span>
+                        <div id="sTimeLine">
+                        </div>
+                        <br>
+                        <br>
+                        
+                        <button id="strFormBtn" class="ok"> <i class="fa fa-paper-plane"></i> Submit</button>
+                    </form>
+                    <br>
+                
+                </div>
+                
+            </div>
+
+
+
+        </section>
+    </main>
+    <script src="js/header.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <style>
+        .card-body{
+            width:50%;
+        }
+        #sPlans .prime{
+            height: 40px;
+            min-width:75px;
+            margin:5px 0 20px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+        <section>
+            <div class="main-title"><span class="fa fa-clipboard"></span> Reports</div>
+
+            <div id="sPlans" class="ta-c">
+                <button class="prime" onclick="tgs()">SP</button>
+
+                <button class="prime" onclick="tg()">Objectives</button>
+            </div>
+
+            <hr>
+
+
+            <div id="spz" class="ta-c hid all">
+
+                <button onclick="tgz()" class="prime">SP1</button>
+                <button onclick="tgz()" class="prime">SP1</button>
+                <button onclick="tgz()" class="prime">SP1</button>
+                <button onclick="tgz()" class="prime">SP1</button>
+              
+
+            </div>
+
+
+        <div id="objz" class="hid all">
+            <table><thead><tr><th>Sno.</th><th>Description</th><th>Percentage</th> <th>.</th> </tr></thead><tbody>
+              <tr><td>1</td><td>Objective 1</td> <td>20%</td> <td> <button class="prime">more</button> </td></tr>
+              <tr><td>2</td><td>Objective 2</td> <td>50%</td> <td> <button class="prime">more</button> </td></tr>
+                </tbody></table>
+
+            
+
+                <div class="d-f j-c">
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaChartz"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-pie pt-4">
+                            <canvas id="myPieChartz"></canvas>
+                        </div>
+                    </div>
+                </div> 
+        </div>
+
+
+           
+<div id="chatz" class="all">
+
+    <div class="d-f j-c">
+        <div class="card-body">
+            <div class="chart-area">
+                <canvas id="myAreaChart"></canvas>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart-pie pt-4">
+                <canvas id="myPieChart"></canvas>
+            </div>
+        </div>
+    </div>   
+    <br>     
+    <hr>
+    <br>
+        <div class="card-body">
+            <div class="chart-bar">
+                <canvas id="myBarChart"></canvas>
+            </div>
+        </div>
+
+</div>
+           
+        </section>
+
+    </main>
+    <script src="js/header.js"></script>
+    <script src="js/chart.js/Chart.min.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
+
+    <script>
+        const tg = ()=>{
+
+            $('.all').hide()
+            $('#objz').slideDown()
+
+        }
+
+        const tgs = ()=>{
+            $('.all').hide()
+            $('#spz').slideDown() 
+        }
+
+        const tgz = ()=>{
+            $('.all').hide()
+            $('#chatz').slideDown() 
+        }
+    </script>
+</body>
+</html>
