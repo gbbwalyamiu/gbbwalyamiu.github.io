@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="modo">
+        <div class="modoContent">
+             
+            <span class="d-f j-sb"><h2 class="ff-title">Action</h2> <i class="fa fa-times-circle c-red"></i> </span>
+             <br>
+             <hr>
+             <br>
+             <div class="o-y hpx-400">
+                <button class="prime" onclick="$('#operations').slideToggle()"> <i class="fa fa-eye"></i> view operations</button>
+                <br>
+                <br>
+                <div class="w-100 hid" id="operations">
+                </div>
+                <br>
+                <button onclick="completeThread()" class="ok">Complete thread <i class="fa fa-check-circle-o"></i> </button>
+                <hr>
+                <h4>Record operation</h4>
+                <input type="hidden" id="thrID">
+                <select name="" id="ddm">
+                    <option value="">Select action taken</option>
+                    <option value="1">Progressive</option>
+                    <option value="3">Blocker</option>
+                </select>
+            <br>
+            <textarea placeholder="comment" name="" id="comm" cols="30" rows="5"></textarea> <br>
+            <textarea class="hid" placeholder="recommend action to be taken" id="textBlocker" cols="30" rows="5"></textarea>
+            <br>
+            <button id="sendOp" class="ok"> <i class="fa fa-paper-plane"></i> Submit</button>
+             </div>
+        </div>
+    </div>
+    <main>
+        <section>
+            <div class="main-title"><span class="fa fa-pencil-square"></span> Updates</div>
+
+            <div class="d-f a-c">
+                <i id="showSp" class="fa fa-chevron-circle-right fa-3x mr-5 text-prim"></i>
+                <div id="sPlans" class="hid">
+                </div>
+            </div>
+            <br>
+            <div id="objTable" class="hid">
+                <h1>Sp-1</h1>
+            </div>
+            <div id="objInfo" class="hid">
+                <button onclick="toggleObj()" class="prime"> <i class="fa fa-arrow-circle-left"></i> Back </button>
+                <div class="h3"></div>
+                <br>
+                <div id="strategies"></div>
+            </div>
+
+            <div class="d-f" id="actsThr">
+                <div id="actz" class="w-50"></div>
+                <div id="thredz" class="w-50"></div>
+            </div>
+
+        </section>
+    </main>
+    <script src="js/header.js"></script>
+</body>
+</html>

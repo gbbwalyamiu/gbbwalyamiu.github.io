@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        input, textarea{
+            width:90%;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    
+    <main>
+        <section>
+            <div class="main-title"><span class="fa fa-cogs"></span> Manage Strategic Plan</div>
+            <div class="sps">
+                <button onclick="toggle()" class="prime"> <i class="fa fa-plus-circle"></i> Add new </button>
+                <br>
+             <div id="spList"></div>
+            </div>
+            <div class="mainForm hid">
+                <button onclick="toggle()" class="prime"> <i class="fa fa-arrow-circle-left"></i> Back </button> <br>
+            <div class="manageForm">
+                
+            <label for="">SP Description</label> <br>
+            <input id="spDesc" type="text">
+            <br>
+            <label for="">Start Date</label> <br>
+            <input id="spStartDate" type="date">
+            <br>
+            <label for="">End Date</label> <br>
+            <input id="spEndDate" type="date">
+            <br>
+            <button id="submitSp" class="ok" type="button"><i class="fa fa-paper-plane"></i> Submit</button>
+        </div>
+        <div id="addSpDetails" class="hid">
+            <div id="spTbl"></div> <br>
+            <div id="spDetailsDiv"></div>
+            <br>
+            <button class="prime" onclick="$('#adddetDiv').slideToggle()"> <i class="fa fa-plus-circle"></i> Add Details </button>
+            <div id="adddetDiv" class="hid">
+            <h3>Add Details</h3>
+            <input id="spID" type="hidden">
+            <label for="">SP Mission</label> <br>
+            <input id="spMission" type="text">
+            <br>
+            <label for="">SP Vision</label> <br>
+            <input id="spVision" type="text">
+            <br>
+            <label for="">SP Goals</label> <br>
+            <textarea name="" id="Goals" cols="30" rows="5"></textarea> <br>
+            <button class="prime" onclick="addToList(this.title)" title="Goals" type="button"> <i class="fa fa-plus"></i> Add to list</button>
+            <hr>
+            <div id="listOfGoals">
+            </div>
+            <hr>
+            <label for="">SP Objectives</label> <br>
+            <textarea name="" id="Objectives" cols="30" rows="5"></textarea> <br>
+            <button class="prime" onclick="addToList(this.title)" title="Objectives" type="button"> <i class="fa fa-plus"></i> Add to list</button>
+            <hr>
+            <div id="listOfObjectives">
+            </div>
+            <hr>
+            <button id="submitspDetails" class="ok" type="button"><i class="fa fa-paper-plane"></i> Submit</button>
+        </div>
+        </div>
+    </div>
+        </section>
+    </main>
+    <script src="js/header.js"></script>
+</body>
+</html>
